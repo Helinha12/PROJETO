@@ -1,0 +1,8 @@
+COR_FUNDO = "#F8FAFC"
+COR_SIDEBAR = "#1E293B"
+COR_BOTAO = "#2563EB"
+COR_CARD = "#FFFFFF"
+
+FONTE_TITULO = ("Segoe UI", 24, "bold")
+FONTE_SUBTITULO = ("Segoe UI", 16, "bold")
+FONTE_TEXTO = ("Segoe UI", 12)
