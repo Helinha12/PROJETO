@@ -1,0 +1,43 @@
+CREATE DATABASE IF NOT EXISTS agenda_contatos;
+USE agenda_contatos;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS contato_endereco;
+DROP TABLE IF EXISTS enderecos;
+DROP TABLE IF EXISTS telefones;
+DROP TABLE IF EXISTS emails;
+DROP TABLE IF EXISTS categorias;
+DROP TABLE IF EXISTS contatos;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE IF NOT EXISTS contatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    categoria VARCHAR(50) DEFAULT 'Pessoal'
+);
+
+CREATE TABLE IF NOT EXISTS telefones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contato_id INT,
+    telefone VARCHAR(20) NOT NULL,
+    FOREIGN KEY (contato_id) REFERENCES contatos(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS emails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contato_id INT,
+    email VARCHAR(100) NOT NULL,
+    FOREIGN KEY (contato_id) REFERENCES contatos(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS enderecos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contato_id INT,
+    rua VARCHAR(150) NOT NULL,
+    numero VARCHAR(20) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(50) NOT NULL,
+    cep VARCHAR(20) NOT NULL,
+    FOREIGN KEY (contato_id) REFERENCES contatos(id) ON DELETE CASCADE
+);
